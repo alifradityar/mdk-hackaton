@@ -372,4 +372,13 @@ angular.module('versinfocus.controllers', ['ionic'])
 })
 
 .controller('NonMarketSingleCtrl', function($scope, $stateParams) {
+})
+
+.controller('KirimKatalogCtrl', function($scope, $stateParams) {
+})
+
+.controller('LaporHargaCtrl', function($scope, $stateParams) {
+})
+
+.controller('LaporPasarCtrl', function($scope, $stateParams) {
 });

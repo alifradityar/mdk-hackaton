@@ -1,0 +1,59 @@
+<ion-view view-title="Add Saving" hide-back-button="false" cache-view="false">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon ion-android-arrow-back" ng-click="back()">
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="form-add-container">
+      <div class="head-saving">
+        <img class="head-background " ng-src="{{data.picture}}">
+          <div class="overlay-white">
+          </div>
+          <div class="head-description absolute-description">
+            Do you have any item that you want to buy?
+              <button class="button icon-button" ng-click="takePhoto()">
+                <span class="ion-ios-camera-outline">
+                </span>
+              </button>
+          </div>
+        </img>
+      </div>
+      <div class="list">
+        <label class="item item-icon-left item-input item-stacked-label">
+          <i class='icon ion-ios-compose-outline'></i>
+          <span class='input-label'>Item Name</span>
+          <input ng-model="data.title" type="text" placeholder="Short Description">
+        </label>
+        <label class="item item-icon-left item-input item-stacked-label">
+          <i class='icon ion-ios-calculator-outline'></i>
+          <span class='input-label'>Price</span>
+          <input ng-model="data.price" type="number" placeholder="Amount">
+        </label>
+        <div class="saving-animate-show" ng-show="isShowFull">
+          <label class="item item-icon-left item-input item-stacked-label">
+            <i class='icon ion-ios-calculator-outline'></i>
+            <span class='input-label'>Initial Saving</span>
+            <input ng-model="data.collect" type="number" placeholder="Amount">
+          </label>
+        </div>
+        <div class="item item-more">
+          <span class="ion-chevron-down" ng-click="SwitchShow()" ng-show="!isShowFull">
+          </span>
+          <span class="ion-chevron-up" ng-click="SwitchShow()" ng-show="isShowFull">
+          </span>
+        </div>
+      </div>
+      <div class="form-button">
+        <button class="button button-stable" ng-click="save()">
+          Save
+        </button>
+      </div>
+      <p>{{data.name}}</p>
+      <p>{{data.amount}}</p>
+      <p>{{data.initial}}</p>
+      <p>{{data.imgURI}}</p>
+    </div>
+  </ion-content>
+</ion-view>

@@ -174,6 +174,33 @@ angular.module('versinfocus', [
         controller: 'NonMarketSingleCtrl'
       }
     }
+  })
+  .state('app.kirimkatalog', {
+    url: "/kirimkatalog",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/kirimkatalog.html",
+        controller: 'KirimKatalogCtrl'
+      }
+    }
+  })
+  .state('app.laporharga', {
+    url: "/laporharga",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/laporharga.html",
+        controller: 'LaporHargaCtrl'
+      }
+    }
+  })
+  .state('app.laporpasar', {
+    url: "/laporpasar",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/laporpasar.html",
+        controller: 'LaporPasarCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

@@ -570,3 +570,36 @@ button.button-icon.round-overlay-button {
 
   }
 }
+
+.head-lapor {
+    position:relative;
+    height:150px;
+}
+
+.head-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.overlay-white{
+    background-color: #fff;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.camera-button {
+  border-radius: 50%;
+  font-size: 2em;
+  height: 50px;
+  width: 50px;
+  background-color:#Fff;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  top:50px;
+}
