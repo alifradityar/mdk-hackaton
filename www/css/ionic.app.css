@@ -7842,3 +7842,23 @@ fader {
   .search-top input {
     width: 100%;
     text-align: center; }
+
+.sub-title {
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px; }
+
+.verified-market {
+  background-color: #BF3C2C;
+  padding: 5px 10px; }
+  .verified-market p {
+    margin-bottom: 2px;
+    color: #fff !important;
+    font-size: 1.1em; }
+  .verified-market h4 {
+    color: #fff !important;
+    margin-bottom: 2px; }
+  .verified-market h3 {
+    color: #fff !important;
+    margin-bottom: 2px;
+    margin-top: 2px; }

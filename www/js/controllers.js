@@ -199,7 +199,7 @@ angular.module('versinfocus.controllers', [])
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-.controller('MarketCtrl', function($scope, $stateParams, $ionicSideMenuDelegate) {
+.controller('MarketCtrl', function($scope, $state, $stateParams, $ionicSideMenuDelegate) {
   console.log("Hello");
   $ionicSideMenuDelegate.canDragContent(false)
   var lat  = '-6.2398054';
@@ -238,9 +238,11 @@ angular.module('versinfocus.controllers', [])
     options: { draggable: false },
   }];
 
-  $scope.forceToMarket = function(){
-    $state.go('app.market.single')
-  }
+  $scope.test = {
+    forceToMarket : function(){
+    console.log("HEHE");
+    $state.go('app.marketSingle');
+  }}
 })
 
 .controller('MarketSingleCtrl', function($scope, $stateParams) {
