@@ -7908,3 +7908,9 @@ fader {
     color: #fff !important;
     margin-bottom: 2px;
     margin-top: 2px; }
+
+.arrow-up {
+  color: #bf3c2c; }
+
+.arrow-down {
+  color: #2ecc71; }

@@ -15,15 +15,15 @@
 
     </div>
     <ion-list class="picture-list">
-      <ion-item ng-repeat="month in months" href="#/app/devotions/{{month.id}}/{{year}}" style="background: url(img/beras.jpg) no-repeat; background-size: cover; background-position: center">
+      <ion-item ng-repeat="commodity in commodities" href="#/app/commodities/{{commodity.name}}" style="background: url(img/{{commodity.picture}}) no-repeat; background-size: cover; background-position: center">
         <div class="fader">
           <div class="commodity">
-            <div class="commodity-name">Beras Reguler</div>
+            <div class="commodity-name">{{commodity.name}}</div>
             <div class="commodity-price">
-              Rp 5000 
-              <span>/kg 
+              Rp {{commodity.price}}
+              <span>/{{commodity.unit}} 
               </span>
-              <i class="icon ion-android-arrow-dropup-circle"></i>
+              <i ng-class="['icon', 'ion-android-arrow-drop'+commodity.direction+'-circle', 'arrow-'+commodity.direction]"></i>
             </div>
           </div>
         </div>

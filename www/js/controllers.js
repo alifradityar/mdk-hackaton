@@ -61,64 +61,19 @@ angular.module('versinfocus.controllers', [])
   ];
 })
 
-.controller('HomeCtrl', function($scope, ArchiveImage) {
-  $scope.archives = [];
-  $scope.years = [];
-  $scope.year = parseInt(moment().format('YYYY'));
+.controller('HomeCtrl', function($scope, ArchiveImage, Commodities) {
+  $scope.commodities = Commodities;
+  $scope.commodities.$loaded(function (snaphot) {
+    console.log($scope.commodities);
+  });
+  
   $scope.menu = {
     searchActive: false,
     toggleSearch: function() {
       $scope.menu.searchActive = !$scope.menu.searchActive;
     }
   }
-  for (var i = $scope.year; i >= $scope.year - 2; i--) {
-    $scope.years.push({id: i, label: i});
-  }
-
-  $scope.monthList = [
-    { title: 'January', id: 1 },
-    { title: 'February', id: 2 },
-    { title: 'March', id: 3 },
-    { title: 'April', id: 4 },
-    { title: 'May', id: 5 },
-    { title: 'June', id: 6 },
-    { title: 'July', id: 7 },
-    { title: 'August', id: 8 },
-    { title: 'September', id: 9 },
-    { title: 'October', id: 10 },
-    { title: 'November', id: 11 },
-    { title: 'December', id: 12 }
-  ];
-
-  $scope.months = $scope.monthList;
-
-  $scope.refreshMonth = function() {
-    if ($scope.archives.length > 0) {
-      angular.forEach($scope.months, function (item, i) {
-        $scope.months[i].image = $scope.archives[i].custom_fields['3colmediaSplashImg_value'][0];
-      });
-    }
-  }
-
-  $scope.changeYear = function(year) {
-    console.log(year);
-    var currentYear = parseInt(moment().format('YYYY'));
-    var currentMonth = parseInt(moment().format('M'));
-    if (year == currentYear) {
-      $scope.months = _.filter($scope.monthList, function (item) {
-        return item.id <= currentMonth;
-      });
-    } else {
-      $scope.months = $scope.monthList;
-    }
-    $scope.refreshMonth();
-  }
-  $scope.changeYear($scope.years[0].id);
-
-  ArchiveImage.getAll().then(function (data) {
-    $scope.archives = data;
-    $scope.refreshMonth();
-  });
+  
 })
 
 .service('VerseService', function(Verse, Favorites, $sce, $cordovaSocialSharing) {
