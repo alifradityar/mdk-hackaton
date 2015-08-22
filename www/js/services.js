@@ -1,5 +1,46 @@
 angular.module('versinfocus.services', [])
 
+.factory('Camera', function($q, $cordovaCamera) {
+
+  return {
+    getPicture: function(options) {
+
+        var def = $q.defer();
+
+        var options = {
+          quality: 50,
+          destinationType: Camera.DestinationType.FILE_URI,
+          sourceType: Camera.PictureSourceType.CAMERA,
+          allowEdit: false,
+          encodingType: Camera.EncodingType.JPEG,
+          targetWidth: 480,
+          targetHeight: 360,
+          saveToPhotoAlbum: true
+        };
+
+        $cordovaCamera.getPicture(options).then(function(imageURI) {
+          // var image = document.getElementById('myImage');
+          // image.src = "data:image/jpeg;base64," + imageData;
+          // q.resolve("data:image/jpeg;base64," + imageData);
+          console.log(imageURI);
+          def.resolve(imageURI);
+        }, function(err) {
+          // error
+          def.reject(err);
+        });
+
+        // navigator.camera.getPicture(function(result) {
+        // // Do any magic you need
+        // q.resolve(result);
+        // }, function(err) {
+        // q.reject(err);
+        // }, options);
+
+        return def.promise;
+    }
+  }
+})
+
 .factory('ArchiveImage', function($http, $q) {
   var self = this;
 
@@ -25,7 +66,7 @@ angular.module('versinfocus.services', [])
       return self.images;
     }
   }
-  
+
   return self;
 })
 
@@ -96,9 +137,9 @@ angular.module('versinfocus.services', [])
           posts: posts
         });
         def.resolve(posts);
-      });  
+      });
     }
-    return def.promise;  
+    return def.promise;
   }
 
   self.getLatest = function() {
@@ -116,9 +157,9 @@ angular.module('versinfocus.services', [])
     } else {
       def.resolve(self.latest);
     }
-    return def.promise;  
+    return def.promise;
   }
-  
+
   return self;
 })
 
@@ -171,7 +212,7 @@ angular.module('versinfocus.services', [])
         def.resolve(data.post);
       });
     }
-    return def.promise;  
+    return def.promise;
   }
 
   self.findByToday = function() {
@@ -186,7 +227,7 @@ angular.module('versinfocus.services', [])
     });
     return def.promise;
   }
-  
+
   return self;
 })
 

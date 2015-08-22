@@ -374,11 +374,62 @@ angular.module('versinfocus.controllers', ['ionic'])
 .controller('NonMarketSingleCtrl', function($scope, $stateParams) {
 })
 
-.controller('KirimKatalogCtrl', function($scope, $stateParams) {
+.controller('KirimKatalogCtrl', function($scope, Camera, $stateParams, $cordovaSms) {
 })
 
-.controller('LaporHargaCtrl', function($scope, $stateParams) {
+.controller('LaporHargaCtrl', function($scope, Camera, $stateParams, $cordovaSms) {
+  $scope.data = {
+    title: "",
+    price:"",
+    market: 0
+  };
+
+  $scope.test = {
+    submit : function(){
+      $state.go('app.overview');
+    },
+    takeCamera : function(){
+      Camera.getPicture().then(function(imageURI) {
+        console.log(imageURI);
+        $scope.data.picture = imageURI;
+        $scope.msg = 'SUCCESS';
+      }, function(err) {
+        console.err(err);
+        $scope.msg = err;
+      }, {
+        quality: 75,
+        targetWidth: 320,
+        targetHeight: 320,
+        saveToPhotoAlbum: false,
+        sourceType: 0,
+        correctOrientation: false
+      });
+    },
+    sms : function() {
+      $cordovaSms
+      .send('085722201351', 'SMS content', options)
+      .then(function() {
+        // Success! SMS was sent
+      }, function(error) {
+        // An error occurred
+      });
+    }
+  }
 })
 
-.controller('LaporPasarCtrl', function($scope, $stateParams) {
+.controller('LaporPasarCtrl', function($scope, Camera, $stateParams, $ionicSideMenuDelegate, $cordovaSMS) {
+  $ionicSideMenuDelegate.canDragContent(false);
+  var lat  = '-6.2398054';
+  var long = '106.8113921';
+  $scope.map = {center: {latitude: lat, longitude: long }, zoom: 16 };
+  $scope.options = {
+    scrollwheel: false,
+    overviewMapControl: false,
+    panControl: true,
+    scaleControl: true,
+    scrollwheel: false,
+    mapTypeControl: false,
+    streetViewControl: false,
+    zoomControl: true
+  };
 });
