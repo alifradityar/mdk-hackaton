@@ -342,10 +342,10 @@ $picture-list-height : 140px;
   left: 10px;
 
   .commodity-name {
-    
+
   }
   .commodity-price {
-    font-size: 1.4em; 
+    font-size: 1.4em;
     span {
       font-size: 1rem;
     }
@@ -371,7 +371,7 @@ $picture-list-height : 140px;
 }
 
 .button-google {
-  background: #bf3c2c; 
+  background: #bf3c2c;
 }
 
 .logo-pazar {
@@ -379,7 +379,7 @@ $picture-list-height : 140px;
   margin: 100px auto 120px auto;
 
   img {
-    width: 100%;  
+    width: 100%;
   }
 }
 
@@ -446,5 +446,127 @@ $picture-list-height : 140px;
     color:#fff !important;
     margin-bottom:2px;
     margin-top:2px;
+  }
+}
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+
+$disabledText:                    rgba(black, 0.26) !default;
+
+$material-shadow:                0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26) !default;
+$material-shadow-pressed:        0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2) !default;
+$floating-button-size: 56px;
+$floating-button-small-size: 40px;
+
+button.button-icon.round-overlay-button {
+  position: absolute;
+  height: $floating-button-size;
+  width: $floating-button-size;
+  border-radius: 50%;
+  min-height: $floating-button-size;
+  padding: 0;
+  border: none;
+
+  background-color: $energized;
+  color: white;
+
+  box-shadow: $material-shadow;
+  transition: all linear 220ms;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+
+  &.energized {
+    background-color: $energized;
+    color: white;
+
+    &.activated {
+      background-color: darken($energized, 15%);
+    }
+  }
+
+  &.assertive {
+    background-color: #BF3C2C;
+    color: white;
+
+    &.activated {
+      background-color: darken(#BF3C2C, 15%);
+    }
+  }
+
+  &.positive {
+    background-color: $positive;
+    color: white;
+
+    &.activated {
+      background-color: darken($positive, 15%);
+    }
+  }
+
+  &.stable {
+    background-color: $disabledText;
+    color: $disabledText;
+
+    &.activated {
+      background-color: darken($disabledText, 15%);
+    }
+  }
+
+  &.icon {
+    &:before {
+      font-size: 24px;
+    }
+  }
+
+  &.small {
+    height: $floating-button-small-size;
+    width: $floating-button-small-size;
+    min-height: 40px;
+    padding: 0;
+    border: none;
+
+    &.icon {
+      &:before {
+        line-height: 40px;
+      }
+    }
+  }
+
+  &.activated {
+    opacity: 1;
+    box-shadow: $material-shadow-pressed;
+  }
+
+  &.left {
+    left: 1px;
+    top: 16px;
+  }
+
+  &.bottom-edge-right {
+    bottom: -24px;
+    right: 16px;
+    z-index: 12;
+  }
+
+  &.bottom-right {
+    bottom: 0;
+    margin-bottom: 16px;
+    right: 16px;
+    z-index: 10;
+
+    &.slide-down {
+      transform: translate3d(0,88px,0);
+    }
+
   }
 }

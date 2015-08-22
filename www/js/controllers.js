@@ -1,4 +1,4 @@
-angular.module('versinfocus.controllers', [])
+angular.module('versinfocus.controllers', ['ionic'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $window, $ionicSideMenuDelegate, $state, $rootScope, Auth, AuthHelper) {
   // Form data for the login modal
@@ -32,7 +32,7 @@ angular.module('versinfocus.controllers', [])
 
   $scope.auth.$onAuth(function(authData) {
     if (authData) {
-      $scope.authData = authData;  
+      $scope.authData = authData;
     } else {
       $state.go('login');
     }
@@ -61,7 +61,13 @@ angular.module('versinfocus.controllers', [])
   ];
 })
 
-.controller('HomeCtrl', function($scope, ArchiveImage) {
+.controller('HomeCtrl', function($scope, $ionicPopover, ArchiveImage) {
+  $ionicPopover.fromTemplateUrl('templates/homepopover.html', {
+      scope: $scope,
+  }).then(function(popover) {
+      $scope.popover = popover;
+  });
+
   $scope.archives = [];
   $scope.years = [];
   $scope.year = parseInt(moment().format('YYYY'));
@@ -225,7 +231,7 @@ angular.module('versinfocus.controllers', [])
   $scope.auth.$onAuth(function(authData) {
     console.log(authData);
     if (authData) {
-      $state.go('app.home');  
+      $state.go('app.home');
     }
   });
 
@@ -319,4 +325,51 @@ angular.module('versinfocus.controllers', [])
 })
 
 .controller('MarketSingleCtrl', function($scope, $stateParams) {
+})
+
+.controller('NonMarketCtrl', function($scope, $state, $stateParams, $ionicSideMenuDelegate) {
+  $ionicSideMenuDelegate.canDragContent(false);
+  var lat  = '-6.2398054';
+  var long = '106.8113921';
+  $scope.map = {center: {latitude: lat, longitude: long }, zoom: 16 };
+  $scope.options = {
+    scrollwheel: false,
+    overviewMapControl: false,
+    panControl: true,
+    scaleControl: true,
+    scrollwheel: false,
+    mapTypeControl: false,
+    streetViewControl: false,
+    zoomControl: true
+  };
+  $scope.markets = [{
+    id: 1,
+    coords: {
+      latitude: -6.2398054,
+      longitude: 106.8113921
+    },
+    options: { draggable: false },
+  },{
+    id: 2,
+    coords: {
+      latitude: -6.2398054,
+      longitude: 106.8114000
+    },
+    options: { draggable: false },
+  },{
+    id: 3,
+    coords: {
+      latitude: -6.2430470,
+      longitude: 106.8247076
+    },
+    options: { draggable: false },
+  }];
+
+  $scope.test = {
+    forceToMarket : function(){
+    $state.go('app.nonMarketSingle');
+  }}
+})
+
+.controller('NonMarketSingleCtrl', function($scope, $stateParams) {
 });

@@ -156,6 +156,24 @@ angular.module('versinfocus', [
         controller: 'MarketSingleCtrl'
       }
     }
+  })
+  .state('app.nonmarket', {
+    url: "/nonmarket",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/nonmarket.html",
+        controller: 'NonMarketCtrl'
+      }
+    }
+  })
+  .state('app.nonMarketSingle', {
+    url: "/nonmarket/single",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/nonmarketsingle.html",
+        controller: 'NonMarketSingleCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
