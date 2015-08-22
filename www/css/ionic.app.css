@@ -7810,3 +7810,16 @@ fader {
 
 .title {
   display: none; }
+
+.angular-google-map {
+  height: 93.5vh; }
+
+.angular-google-map-container {
+  height: 93.5vh; }
+
+.content-fullscreen .scroll {
+  height: 100%; }
+.content-fullscreen .angular-google-map {
+  height: 100%; }
+.content-fullscreen .angular-google-map-container {
+  height: 100vh; }
