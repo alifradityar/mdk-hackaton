@@ -7628,9 +7628,11 @@ fader {
   opacity: 0;
   z-index: -1; }
 
-.has-menu {
-  top: 230px; }
+.scroll-content.has-header {
+  top: 60px; }
 
+.verse-sidemenu .scroll-content.has-menu {
+  top: 230px; }
 .verse-sidemenu .bar-menu {
   height: 230px;
   border-color: #ececec !important; }
@@ -7700,7 +7702,7 @@ fader {
     padding: 0 !important;
     font-size: 1.2em; }
     .picture-list .item .item-content .fader {
-      background: rgba(0, 0, 0, 0.875);
+      background: rgba(0, 0, 0, 0.4);
       padding: 0;
       margin: 0;
       height: 100%;
@@ -7808,6 +7810,3 @@ fader {
 
 .title {
   display: none; }
-
-.has-header {
-  top: 60px; }
