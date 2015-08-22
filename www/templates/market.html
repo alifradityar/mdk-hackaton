@@ -8,7 +8,7 @@
         </label>
       </div>
     </div>
-    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" ng-click="forceToMarket()">
       <ui-gmap-marker ng-repeat="market in markets" coords="market.coords" idkey="market.id" options="market.options"></ui-gmap-marker>
 		</ui-gmap-google-map>
   </ion-content>

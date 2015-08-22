@@ -11,7 +11,6 @@ angular.module('versinfocus', [
   'versinfocus.directives',
   'ngStorage',
   'ngCordova',
-  'uiGmapgoogle-maps'
 ])
 
 .run(function($ionicPlatform) {
@@ -132,7 +131,16 @@ angular.module('versinfocus', [
         controller: 'MarketCtrl'
       }
     }
+  })
+  .state('app.market.single', {
+    url: "/market/single",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/marketsingle.html",
+        controller: 'MarketSingleCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/app/today');
 });
