@@ -274,7 +274,6 @@ angular.module('versinfocus.controllers', [])
 })
 
 .controller('MarketCtrl', function($scope, $stateParams) {
-  console.log("WOI");
   var lat  = '-6.2398054';
   var long = '106.8113921';
   $scope.map = {center: {latitude: lat, longitude: long }, zoom: 16 };
@@ -288,4 +287,26 @@ angular.module('versinfocus.controllers', [])
     streetViewControl: false,
     zoomControl: false
   };
+  $scope.markets = [{
+    id: 1,
+    coords: {
+      latitude: -6.2430456,
+      longitude: 106.8247067
+    },
+    options: { draggable: false },
+  },{
+    id: 2,
+    coords: {
+      latitude: -6.2430456,
+      longitude: 106.8247076
+    },
+    options: { draggable: false },
+  },{
+    id: 3,
+    coords: {
+      latitude: -6.2430470,
+      longitude: 106.8247076
+    },
+    options: { draggable: false },
+  }];
 });
