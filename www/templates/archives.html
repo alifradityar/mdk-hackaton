@@ -1,0 +1,23 @@
+<ion-view view-title="Archives">
+  
+  <ion-content>
+    <div class="list year">
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Year
+        </div>
+        <select ng-model="year" ng-options="value.id as value.label for value in years" ng-change="changeYear(year)">
+        </select>
+      </label>
+
+    </div>
+    <ion-list class="picture-list">
+      <ion-item ng-repeat="month in months" href="#/app/devotions/{{month.id}}/{{year}}" style="background: url({{month.image}}) no-repeat; background-size: cover; background-position: center">
+        <div class="fader">
+          {{month.title}}
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

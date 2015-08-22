@@ -15,9 +15,307 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+$energized:                       #bf3c2c !default;
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+// Include font
+@font-face {
+    font-family: "GothamBold";
+    src: url('../fonts/GothamRnd-Bold.otf')  format('opentype');
+    font-weight: 100;
+    font-style: bold;
+}
+
+@font-face {
+    font-family: "GothamMedium";
+    src: url('../fonts/GothamRnd-Medium.otf')  format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5, .title {
+    font-family: "GothamBold", "HelveticaNeue", "Arial";
+    font-weight: 100;
+}
+
+fader {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,.1);
+  opacity: 0;
+  z-index: -1; 
+}
+
+$bar-height: 230px;
+.has-menu {
+    top: $bar-height; 
+}
+.verse-sidemenu {
+
+    .bar-menu {
+        height: $bar-height;
+        border-color: #ececec !important;
+        .logo-header {
+            background: url('../img/logo-header.png') no-repeat;
+            width: 264px;
+            height: 60px;
+            background-size: contain;
+        }   
+        .profile {
+          width: 100%;
+
+          .profile-picture {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            display: block;
+            img {
+              width: 100%;
+            }
+          }
+
+          .profile-name {
+            display: block;
+            text-align: center;
+            font-family: 'GothamBold';
+            color: $energized;
+            font-size: 1.2em;
+          }
+          .profile-location {
+            text-align: center;
+            font-family: 'GothamMedium';
+            color: $energized;
+          }
+        }
+    }
+    .large-menu {
+        font-family: "GothamMedium", "HelveticaNeue", "Arial";
+        font-weight: 100;
+        a {
+          font-size: 1em;
+          color: $energized;
+        }
+        .item {
+          border-color: #fafafa;
+          span {
+            line-height: 40px;
+            margin-left: 10px;
+          }
+
+          .item-content {
+            padding: 10px 10px 10px 20px;
+          }
+        }
+        img.icon {
+            width: 40px;
+            height: 40px;
+            float: left;
+        }
+        box-sizing: border-box;
+    }
+}
+
+.profile-point {
+
+}
+
+$picture-list-height : 140px;
+.picture-list {
+  
+  .item {
+    height: $picture-list-height ;
+    color: #fff;
+    background: #000;
+    border: none !important;
+  
+    .item-content {
+      background: inherit;
+      padding: 10px;
+      height: $picture-list-height ;
+      line-height: $picture-list-height - 20px;
+      text-align: center;
+      font-family: "GothamMedium", "HelveticaNeue", "Arial";
+      font-size: 2em;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+    }
+    
+    .item-content {
+      padding: 0 !important;
+
+      .fader {
+        background: rgba(0,0,0,.875);
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        position: relative;
+
+        .time {
+          position: absolute;
+          bottom: -10px;
+          font-size: .6em;
+          width: 100%;
+        }
+      }
+      font-size: 1.2em;
+    }
+  }
+
+  &.devotion {
+    
+  }
+}
+
+.full-image {
+  width: 100%;
+}
+
+.title {
+  small { 
+  }
+}
+
+.verse {
+
+  background: #f1f0f5;
+
+  .caption {
+    text-align: center;
+    background: #fff;
+    font-family: "GothanBold", "HelveticaNeue", "Arial";
+    font-size: 1.7em;
+    padding: 20px;
+
+
+  }
+
+  .description {
+    padding: 20px;
+
+    .body {
+      background: #fff;
+      border-radius: 5px;
+      padding: 15px;
+      text-align: justify;
+      h2 {
+        font-size: 1.5em;
+      }
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+}
+
+.icon-heart {
+  font-size: 2.2em;
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  top: 10px;
+  right: 10px;
+  color: #fff;
+  background: rgba(0,0,0,.3);
+  border-radius: 50%;
+  padding: 15px;
+
+}
+
+.bar.bar-footer.bar-red {
+
+  padding: 0;
+  background: transparent;
+
+  .row {
+    padding: 0;
+     .col {
+        padding: 0;
+
+        .button.button-block, .button.button-full  {
+          margin-top: 0 !important;
+          margin-bottom: 0 !important;
+          height: 45px;
+          opacity: .95;
+        }
+     }
+  }
+
+} 
+
+.item-wrap {
+  position: relative;
+  margin-bottom: -5px;
+}
+
+.list.year {
+  margin-bottom: 0;
+}
+
+.bar.bar-energized {
+  padding: 0;
+}
+
+.bar-point {
+  height: 60px;
+}
+
+.button-footer {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  width: 100%;
+  line-height: 60px !important;
+  font-family: 'GothamBold';
+  font-size: 1.3em !important;
+
+}
+
+.pane, .view {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: inherit;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.bar-header {
+  height: 60px;
+
+  .button {
+    padding: 3px 15px !important;
+    color: $energized !important;
+    &.button-active:after {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      bottom: -13px;
+      left: -6px;
+      content: ' ';
+      border-bottom: 4px solid #ddd;
+    }
+  }
+}
+
+.title {
+  display: none;
+}
+
+.has-header {
+  top: 60px;
+}
