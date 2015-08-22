@@ -273,32 +273,33 @@ angular.module('versinfocus.controllers', [])
   }
 })
 
-.controller('MarketCtrl', function($scope, $stateParams) {
+.controller('MarketCtrl', function($scope, $state, $stateParams, $ionicSideMenuDelegate) {
+  $ionicSideMenuDelegate.canDragContent(false);
   var lat  = '-6.2398054';
   var long = '106.8113921';
   $scope.map = {center: {latitude: lat, longitude: long }, zoom: 16 };
   $scope.options = {
     scrollwheel: false,
     overviewMapControl: false,
-    panControl: false,
-    scaleControl: false,
+    panControl: true,
+    scaleControl: true,
     scrollwheel: false,
     mapTypeControl: false,
     streetViewControl: false,
-    zoomControl: false
+    zoomControl: true
   };
   $scope.markets = [{
     id: 1,
     coords: {
-      latitude: -6.2430456,
-      longitude: 106.8247067
+      latitude: -6.2398054,
+      longitude: 106.8113921
     },
     options: { draggable: false },
   },{
     id: 2,
     coords: {
-      latitude: -6.2430456,
-      longitude: 106.8247076
+      latitude: -6.2398054,
+      longitude: 106.8114000
     },
     options: { draggable: false },
   },{
@@ -309,4 +310,13 @@ angular.module('versinfocus.controllers', [])
     },
     options: { draggable: false },
   }];
+
+  $scope.test = {
+    forceToMarket : function(){
+    console.log("HEHE");
+    $state.go('app.marketSingle');
+  }}
+})
+
+.controller('MarketSingleCtrl', function($scope, $stateParams) {
 });
