@@ -6,7 +6,7 @@
       <ion-nav-buttons side="left">
         <a ng-class="['button', 'button-icon', 'button-clear', 'ion-ios-home-outline', (activeMenu == 'app.home' ? 'button-active' : '')]" href="#/app/home">
         </a>
-        <a ng-class="['button', 'button-icon', 'button-clear', 'ion-ios-cart-outline', (activeMenu == 'app.today' ? 'button-active' : '')]" href="#/app/market">
+        <a ng-class="['button', 'button-icon', 'button-clear', 'ion-ios-cart-outline', (activeMenu == 'app.market' ? 'button-active' : '')]" href="#/app/market">
         </a>
         <a ng-class="['button', 'button-icon', 'button-clear', 'ion-ios-cog-outline', (activeMenu == 'app.favorites' ? 'button-active' : '')]" href="#/app/favorites">
         </a>
@@ -24,10 +24,10 @@
     <ion-header-bar class="bar-light bar-menu">
       <div class="profile">
         <div class="profile-picture">
-          <img src="img/alif.jpg" alt="">
+          <img ng-src="{{authHelper.getPicture(authData)}}" alt="">
         </div>
         <div class="profile-name">
-          Alif Raditya Rochman
+          {{authHelper.getName(authData)}}
         </div>
         <div class="profile-location">
           Bandung, Indonesia
@@ -52,6 +52,10 @@
         <ion-item href="#/app/help" ng-click="openMenu()">
           <img src="img/icon-help.png" alt="" class="icon">
           <span>Bantuan</span>
+        </ion-item>
+        <ion-item href="#/app/help" ng-click="logout()">
+          <img src="img/icon-help.png" alt="" class="icon">
+          <span>Logout</span>
         </ion-item>
         <!-- <ion-item href="#" ng-click="openMenu()">
           <img src="img/icon-setting.png" alt="" class="icon">

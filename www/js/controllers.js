@@ -1,6 +1,6 @@
 angular.module('versinfocus.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $window, $ionicSideMenuDelegate, $state, $rootScope) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $window, $ionicSideMenuDelegate, $state, $rootScope, Auth, AuthHelper) {
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -17,11 +17,26 @@ angular.module('versinfocus.controllers', [])
     $ionicSideMenuDelegate.toggleLeft(true);
   };
 
+  $scope.logout = function() {
+    $scope.auth.$unauth();
+  };
+
   $scope.isWalletShown = false;
   $scope.toggleWallet = function () {
     $scope.isWalletShown = $scope.isWalletShown === false ? true : false;
     console.log('Toggled');
   }
+
+  $scope.authHelper = AuthHelper;
+  $scope.auth = Auth;
+
+  $scope.auth.$onAuth(function(authData) {
+    if (authData) {
+      $scope.authData = authData;  
+    } else {
+      $state.go('login');
+    }
+  });
 
   $scope.activeMenu = 'app.home';
 
@@ -50,6 +65,12 @@ angular.module('versinfocus.controllers', [])
   $scope.archives = [];
   $scope.years = [];
   $scope.year = parseInt(moment().format('YYYY'));
+  $scope.menu = {
+    searchActive: false,
+    toggleSearch: function() {
+      $scope.menu.searchActive = !$scope.menu.searchActive;
+    }
+  }
   for (var i = $scope.year; i >= $scope.year - 2; i--) {
     $scope.years.push({id: i, label: i});
   }
@@ -197,6 +218,59 @@ angular.module('versinfocus.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+})
+
+.controller('LoginCtrl', function($scope, $state, $firebaseAuth, $cordovaOauth, FBURL, Auth, AuthHelper) {
+  $scope.auth = Auth;
+  $scope.auth.$onAuth(function(authData) {
+    console.log(authData);
+    if (authData) {
+      $state.go('app.home');  
+    }
+  });
+
+  $scope.login = function() {
+    $state.go('app.home');
+  }
+
+  $scope.succeed = function(authData) {
+    console.log(authData);
+    if (authData) {
+      var ref = new Firebase(FBURL);
+      ref.child("users").child(authData.uid).set({
+        provider: authData.provider,
+        name: AuthHelper.getName(authData),
+        picture: AuthHelper.getPicture(authData)
+      });
+      $state.go('busintime.getbus');
+    }
+  }
+
+  $scope.facebook = function() {
+    // $cordovaOauth.facebook(FB_APP_ID, ["email"]).then(function(result) {
+    //   Auth.$authWithOAuthToken("facebook", result.access_token).then($scope.succeed, function(error) {
+    //     console.error("ERROR: " + error);
+    //   });
+    // }, function(error) {
+    //   console.log("ERROR: " + error);
+      Auth.$authWithOAuthPopup("facebook").then($scope.succeed).catch(function(error) {
+        console.log("Authentication failed:", error);
+      });
+    // });
+  }
+
+  $scope.google = function() {
+    // $cordovaOauth.google(GOOGLE_APP_ID, ["email"]).then(function(result) {
+    //   Auth.$authWithOAuthToken("google", result.access_token).then($scope.succeed, function(error) {
+    //     console.error("ERROR: " + error);
+    //   });
+    // }, function(error) {
+      // console.log("ERROR: " + error);
+      Auth.$authWithOAuthPopup("google").then($scope.succeed).catch(function(error) {
+        console.log("Authentication failed:", error);
+      });
+    // });
+  }
 })
 
 .controller('MarketCtrl', function($scope, $stateParams) {

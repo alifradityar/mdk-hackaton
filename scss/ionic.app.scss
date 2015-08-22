@@ -149,12 +149,12 @@ $picture-list-height : 140px;
       background: inherit;
       padding: 10px;
       height: $picture-list-height ;
-      line-height: $picture-list-height - 20px;
+      // line-height: $picture-list-height - 20px;
       text-align: center;
       font-family: "GothamMedium", "HelveticaNeue", "Arial";
       font-size: 2em;
       text-transform: uppercase;
-      letter-spacing: 5px;
+      letter-spacing: 1px;
     }
     
     .item-content {
@@ -330,3 +330,72 @@ $picture-list-height : 140px;
   .angular-google-map { height: 100%; }
   .angular-google-map-container {height: 100vh;}
 }
+
+.input-search {
+  right: 0;
+}
+
+.commodity {
+  position: absolute;
+  bottom: 10px;
+  text-align: left;
+  left: 10px;
+
+  .commodity-name {
+    
+  }
+  .commodity-price {
+    font-size: 1.4em; 
+    span {
+      font-size: 1rem;
+    }
+  }
+}
+
+.button-custom {
+  border: none;
+  border-radius: 0;
+  line-height: 20px;
+  color: #fff !important;
+  font-size: 1em;
+  font-family: 'GothamMedium', 'Arial';
+
+  i {
+    font-size: 1.5em;
+    margin-right: 10px;
+  }
+}
+
+.button-facebook {
+  background: #4e558e;
+}
+
+.button-google {
+  background: #bf3c2c; 
+}
+
+.logo-pazar {
+  width: 300px;
+  margin: 100px auto 120px auto;
+
+  img {
+    width: 100%;  
+  }
+}
+
+.full-picture {
+  background: url('../img/splash.jpg') no-repeat;
+  background-size: cover;
+}
+
+.login {
+  height: 100vh;
+  .login-button {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+  }
+}
+
+
+

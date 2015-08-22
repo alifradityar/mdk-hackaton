@@ -5,14 +5,18 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('versinfocus', [
+  'firebase',
   'ionic',
   'versinfocus.controllers',
   'versinfocus.services',
   'versinfocus.directives',
+  'versinfocus.users',
   'ngStorage',
   'ngCordova',
   'uiGmapgoogle-maps'
 ])
+
+.constant('FBURL', 'https://pazar.firebaseio.com')
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -35,7 +39,18 @@ angular.module('versinfocus', [
     url: "/app",
     abstract: true,
     templateUrl: "templates/menu.html",
-    controller: 'AppCtrl'
+    controller: 'AppCtrl',
+    resolve: {
+      currentAuth: function(Auth) {
+        return Auth.$waitForAuth();
+      },
+    },
+  })
+
+  .state('login', {
+    url: "/login",
+    templateUrl: "templates/login.html",
+    controller: 'LoginCtrl'
   })
 
   .state('app.home', {
@@ -134,5 +149,5 @@ angular.module('versinfocus', [
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/login');
 });
