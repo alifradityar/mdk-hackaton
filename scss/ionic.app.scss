@@ -50,7 +50,7 @@ fader {
   width: 100%;
   background: rgba(0,0,0,.1);
   opacity: 0;
-  z-index: -1; 
+  z-index: -1;
 }
 
 $bar-height: 230px;
@@ -62,7 +62,7 @@ $bar-height: 230px;
 .verse-sidemenu {
 
     .scroll-content.has-menu {
-        top: $bar-height; 
+        top: $bar-height;
     }
 
     .bar-menu {
@@ -73,7 +73,7 @@ $bar-height: 230px;
             width: 264px;
             height: 60px;
             background-size: contain;
-        }   
+        }
         .profile {
           width: 100%;
 
@@ -138,13 +138,13 @@ $bar-height: 230px;
 
 $picture-list-height : 140px;
 .picture-list {
-  
+
   .item {
     height: $picture-list-height ;
     color: #fff;
     background: #000;
     border: none !important;
-  
+
     .item-content {
       background: inherit;
       padding: 10px;
@@ -156,7 +156,7 @@ $picture-list-height : 140px;
       text-transform: uppercase;
       letter-spacing: 5px;
     }
-    
+
     .item-content {
       padding: 0 !important;
 
@@ -179,7 +179,7 @@ $picture-list-height : 140px;
   }
 
   &.devotion {
-    
+
   }
 }
 
@@ -188,7 +188,7 @@ $picture-list-height : 140px;
 }
 
 .title {
-  small { 
+  small {
   }
 }
 
@@ -259,7 +259,7 @@ $picture-list-height : 140px;
      }
   }
 
-} 
+}
 
 .item-wrap {
   position: relative;
@@ -329,4 +329,31 @@ $picture-list-height : 140px;
   .scroll { height: 100%;}
   .angular-google-map { height: 100%; }
   .angular-google-map-container {height: 100vh;}
+}
+
+.search-top {
+  margin-bottom: 0px !important;
+  .placeholder-icon {
+    margin-right: 0px;
+    margin-left: auto;
+  }
+  ::-webkit-input-placeholder {
+     text-align: center;
+  }
+
+  :-moz-placeholder { /* Firefox 18- */
+     text-align: center;
+  }
+
+  ::-moz-placeholder {  /* Firefox 19+ */
+     text-align: center;
+  }
+
+  :-ms-input-placeholder {
+     text-align: center;
+  }
+  input {
+    width:100%;
+    text-align: center;
+  }
 }

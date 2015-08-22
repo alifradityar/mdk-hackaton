@@ -7823,3 +7823,22 @@ fader {
   height: 100%; }
 .content-fullscreen .angular-google-map-container {
   height: 100vh; }
+
+.search-top {
+  margin-bottom: 0px !important; }
+  .search-top .placeholder-icon {
+    margin-right: 0px;
+    margin-left: auto; }
+  .search-top ::-webkit-input-placeholder {
+    text-align: center; }
+  .search-top :-moz-placeholder {
+    /* Firefox 18- */
+    text-align: center; }
+  .search-top ::-moz-placeholder {
+    /* Firefox 19+ */
+    text-align: center; }
+  .search-top :-ms-input-placeholder {
+    text-align: center; }
+  .search-top input {
+    width: 100%;
+    text-align: center; }
