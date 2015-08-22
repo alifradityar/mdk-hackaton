@@ -54,10 +54,16 @@ fader {
 }
 
 $bar-height: 230px;
-.has-menu {
-    top: $bar-height; 
+
+
+.scroll-content.has-header {
+  top: 60px;
 }
 .verse-sidemenu {
+
+    .scroll-content.has-menu {
+        top: $bar-height; 
+    }
 
     .bar-menu {
         height: $bar-height;
@@ -155,7 +161,7 @@ $picture-list-height : 140px;
       padding: 0 !important;
 
       .fader {
-        background: rgba(0,0,0,.875);
+        background: rgba(0,0,0,.4);
         padding: 0;
         margin: 0;
         height: 100%;
@@ -307,15 +313,11 @@ $picture-list-height : 140px;
       bottom: -13px;
       left: -6px;
       content: ' ';
-      border-bottom: 4px solid #ddd;
+      border-bottom: 4px solid $energized;
     }
   }
 }
 
 .title {
   display: none;
-}
-
-.has-header {
-  top: 60px;
 }

@@ -38,12 +38,12 @@ angular.module('versinfocus', [
     controller: 'AppCtrl'
   })
 
-  .state('app.archives', {
-    url: "/archives",
+  .state('app.home', {
+    url: "/home",
     views: {
       'menuContent': {
-        templateUrl: "templates/archives.html",
-        controller: 'ArchivesCtrl'
+        templateUrl: "templates/home.html",
+        controller: 'HomeCtrl'
       }
     }
   })
@@ -134,5 +134,5 @@ angular.module('versinfocus', [
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/today');
+  $urlRouterProvider.otherwise('/app/home');
 });

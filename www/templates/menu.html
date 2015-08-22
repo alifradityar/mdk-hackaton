@@ -4,15 +4,14 @@
     <ion-nav-bar class="bar-light">
 
       <ion-nav-buttons side="left">
-        <a class="button button-icon button-clear button-active ion-ios-home-outline">
+        <a ng-class="['button', 'button-icon', 'button-clear', 'ion-ios-home-outline', (activeMenu == 'app.home' ? 'button-active' : '')]" href="#/app/home">
         </a>
-        <a class="button button-icon button-clear ion-ios-cart-outline" href="#/app/market">
+        <a ng-class="['button', 'button-icon', 'button-clear', 'ion-ios-cart-outline', (activeMenu == 'app.today' ? 'button-active' : '')]" href="#/app/market">
         </a>
-        <a class="button button-icon button-clear ion-ios-cog-outline">
+        <a ng-class="['button', 'button-icon', 'button-clear', 'ion-ios-cog-outline', (activeMenu == 'app.favorites' ? 'button-active' : '')]" href="#/app/favorites">
         </a>
-        <a class="button button-icon button-clear ion-ios-clock-outline">
+        <a ng-class="['button', 'button-icon', 'button-clear', 'ion-ios-paper-outline', (activeMenu == 'app.browse' ? 'button-active' : '')]" href="#/app/browse">
         </a>
-
       </ion-nav-buttons>
       <ion-nav-buttons side="right">
         <button class="button button-icon button-clear ion-ios-person-outline" menu-toggle="left" menu-close>

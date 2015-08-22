@@ -1,6 +1,6 @@
 angular.module('versinfocus.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $window, $ionicSideMenuDelegate, $state) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $window, $ionicSideMenuDelegate, $state, $rootScope) {
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -23,6 +23,12 @@ angular.module('versinfocus.controllers', [])
     console.log('Toggled');
   }
 
+  $scope.activeMenu = 'app.home';
+
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+    $scope.activeMenu = toState.name;
+  });
+
   // ionic.on('resize',function() {
   //   ionic.off('resize',null,window);
   //   self.positionView(target,modalEl);
@@ -40,7 +46,7 @@ angular.module('versinfocus.controllers', [])
   ];
 })
 
-.controller('ArchivesCtrl', function($scope, ArchiveImage) {
+.controller('HomeCtrl', function($scope, ArchiveImage) {
   $scope.archives = [];
   $scope.years = [];
   $scope.year = parseInt(moment().format('YYYY'));
