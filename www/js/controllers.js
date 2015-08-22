@@ -12,11 +12,11 @@ angular.module('versinfocus.controllers', [])
   });
 
   $scope.width = $window.innerWidth;
-  
+
   $scope.openMenu = function() {
     $ionicSideMenuDelegate.toggleLeft(true);
   };
-  
+
   $scope.isWalletShown = false;
   $scope.toggleWallet = function () {
     $scope.isWalletShown = $scope.isWalletShown === false ? true : false;
@@ -37,7 +37,7 @@ angular.module('versinfocus.controllers', [])
     { title: 'Indie', id: 4 },
     { title: 'Rap', id: 5 },
     { title: 'Cowbell', id: 6 }
-  ];  
+  ];
 })
 
 .controller('ArchivesCtrl', function($scope, ArchiveImage) {
@@ -191,4 +191,21 @@ angular.module('versinfocus.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+})
+
+.controller('MarketCtrl', function($scope, $stateParams) {
+  console.log("WOI");
+  var lat  = '-6.2398054';
+  var long = '106.8113921';
+  $scope.map = {center: {latitude: lat, longitude: long }, zoom: 16 };
+  $scope.options = {
+    scrollwheel: false,
+    overviewMapControl: false,
+    panControl: false,
+    scaleControl: false,
+    scrollwheel: false,
+    mapTypeControl: false,
+    streetViewControl: false,
+    zoomControl: false
+  };
 });

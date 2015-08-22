@@ -4,15 +4,15 @@
     <ion-nav-bar class="bar-light">
 
       <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear button-active ion-ios-home-outline" menu-toggle="left" menu-close>
-        </button>
-        <button class="button button-icon button-clear ion-ios-cart-outline" menu-toggle="left" menu-close>
-        </button>
-        <button class="button button-icon button-clear ion-ios-cog-outline" menu-toggle="left" menu-close>
-        </button>
-        <button class="button button-icon button-clear ion-ios-clock-outline" menu-toggle="left" menu-close>
-        </button>
-        
+        <a class="button button-icon button-clear button-active ion-ios-home-outline">
+        </a>
+        <a class="button button-icon button-clear ion-ios-cart-outline" href="#/app/market">
+        </a>
+        <a class="button button-icon button-clear ion-ios-cog-outline">
+        </a>
+        <a class="button button-icon button-clear ion-ios-clock-outline">
+        </a>
+
       </ion-nav-buttons>
       <ion-nav-buttons side="right">
         <button class="button button-icon button-clear ion-ios-person-outline" menu-toggle="left" menu-close>
@@ -20,7 +20,7 @@
       </ion-nav-buttons>
     </ion-nav-bar>
       <ion-nav-view name="menuContent"></ion-nav-view>
-  </ion-side-menu>  
+  </ion-side-menu>
   <ion-side-menu-content style="width:80%; box-shadow: 0px 0px 50px rgba(0,0,0,.5);">
     <ion-header-bar class="bar-light bar-menu">
       <div class="profile">
@@ -35,7 +35,7 @@
         </div>
       </div>
     </ion-header-bar>
-    
+
     <ion-content class="has-footer has-menu">
       <ion-list class="large-menu">
         <ion-item href="#/app/today" ng-click="openMenu()">
@@ -64,7 +64,7 @@
       <!-- <h1 class="title">Subscribe Now</h1> -->
       <a href="http://warungsatekamu.org/" class="button button-full button-energized button-footer" target="_blank">
         5000 poin
-      </a>    
+      </a>
     </ion-footer-bar>
   </ion-side-menu-content>
 </ion-side-menus>

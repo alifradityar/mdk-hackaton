@@ -5,12 +5,13 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('versinfocus', [
-  'ionic', 
-  'versinfocus.controllers', 
-  'versinfocus.services', 
+  'ionic',
+  'versinfocus.controllers',
+  'versinfocus.services',
   'versinfocus.directives',
   'ngStorage',
   'ngCordova',
+  'uiGmapgoogle-maps'
 ])
 
 .run(function($ionicPlatform) {
@@ -120,6 +121,15 @@ angular.module('versinfocus', [
       'menuContent': {
         templateUrl: "templates/playlist.html",
         controller: 'PlaylistCtrl'
+      }
+    }
+  })
+  .state('app.market', {
+    url: "/market",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/market.html",
+        controller: 'MarketCtrl'
       }
     }
   });
