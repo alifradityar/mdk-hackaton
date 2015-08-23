@@ -16,6 +16,7 @@ $dark:                            #444 !default;
 */
 
 $energized:                       #bf3c2c !default;
+$light-green:                     #2ecc71 !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -448,22 +449,22 @@ $picture-list-height : 140px;
     margin-top:2px;
   }
 }
+
+.arrow-up {
+  color: $energized;
+}
+
+.arrow-down {
+  color: $light-green;
+}
+
+@import "scss/timeline";
+
 body {
   cursor: url('http://ionicframework.com/img/finger.png'), auto;
 }
 
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #444 !default;
-
 $disabledText:                    rgba(black, 0.26) !default;
-
 $material-shadow:                0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26) !default;
 $material-shadow-pressed:        0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2) !default;
 $floating-button-size: 56px;
@@ -637,4 +638,8 @@ button.button-icon.round-overlay-button {
           color: #BF3C2C !important;
         }
     }
+}
+.chart-commodity {
+  height: 250px;
+  width: 100%;
 }

@@ -251,3 +251,9 @@ angular.module('versinfocus.services', [])
     }
   }
 })
+
+.factory("Commodities", function($firebaseArray, FBURL) {
+  var ref = new Firebase(FBURL);
+  var commodity = ref.child('commodity');
+  return $firebaseArray(commodity);
+})

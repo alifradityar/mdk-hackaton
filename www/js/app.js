@@ -13,6 +13,7 @@ angular.module('versinfocus', [
   'versinfocus.users',
   'ngStorage',
   'ngCordova',
+  'highcharts-ng',
   'uiGmapgoogle-maps'
 ])
 
@@ -59,6 +60,16 @@ angular.module('versinfocus', [
       'menuContent': {
         templateUrl: "templates/home.html",
         controller: 'HomeCtrl'
+      }
+    }
+  })
+
+  .state('app.commoditySingle', {
+    url: "/commodity/:name",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/commodity-single.html",
+        controller: 'CommoditySingleCtrl'
       }
     }
   })
@@ -120,6 +131,17 @@ angular.module('versinfocus', [
       }
     }
   })
+
+  .state('app.timeline', {
+    url: "/timeline",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/timeline.html",
+        controller: 'TimelineCtrl'
+      }
+    }
+  })
+
     .state('app.playlists', {
       url: "/playlists",
       views: {
