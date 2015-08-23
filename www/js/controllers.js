@@ -1,4 +1,4 @@
-angular.module('versinfocus.controllers', [])
+angular.module('versinfocus.controllers', ['ionic'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $window, $ionicSideMenuDelegate, $state, $rootScope, Auth, AuthHelper) {
   // Form data for the login modal
@@ -32,7 +32,7 @@ angular.module('versinfocus.controllers', [])
 
   $scope.auth.$onAuth(function(authData) {
     if (authData) {
-      $scope.authData = authData;  
+      $scope.authData = authData;
     } else {
       $state.go('login');
     }
@@ -61,12 +61,17 @@ angular.module('versinfocus.controllers', [])
   ];
 })
 
-.controller('HomeCtrl', function($scope, ArchiveImage, Commodities) {
+.controller('HomeCtrl', function($scope, ArchiveImage, Commodities, $ionicPopover) {
   $scope.commodities = Commodities;
   $scope.commodities.$loaded(function (snaphot) {
     console.log($scope.commodities);
   });
-  
+  $ionicPopover.fromTemplateUrl('templates/homepopover.html', {
+      scope: $scope,
+  }).then(function(popover) {
+      $scope.popover = popover;
+  });
+
   $scope.menu = {
     searchActive: false,
     toggleSearch: function() {
@@ -180,7 +185,7 @@ angular.module('versinfocus.controllers', [])
   $scope.auth.$onAuth(function(authData) {
     console.log(authData);
     if (authData) {
-      $state.go('app.home');  
+      $state.go('app.home');
     }
   });
 
@@ -274,4 +279,142 @@ angular.module('versinfocus.controllers', [])
 })
 
 .controller('MarketSingleCtrl', function($scope, $stateParams) {
+})
+
+.controller('NonMarketCtrl', function($scope, $state, $stateParams, $ionicSideMenuDelegate) {
+  $ionicSideMenuDelegate.canDragContent(false);
+  var lat  = '-6.2398054';
+  var long = '106.8113921';
+  $scope.map = {center: {latitude: lat, longitude: long }, zoom: 16 };
+  $scope.options = {
+    scrollwheel: false,
+    overviewMapControl: false,
+    panControl: true,
+    scaleControl: true,
+    scrollwheel: false,
+    mapTypeControl: false,
+    streetViewControl: false,
+    zoomControl: true
+  };
+  $scope.markets = [{
+    id: 1,
+    coords: {
+      latitude: -6.2398054,
+      longitude: 106.8113921
+    },
+    options: { draggable: false },
+  },{
+    id: 2,
+    coords: {
+      latitude: -6.2398054,
+      longitude: 106.8114000
+    },
+    options: { draggable: false },
+  },{
+    id: 3,
+    coords: {
+      latitude: -6.2430470,
+      longitude: 106.8247076
+    },
+    options: { draggable: false },
+  }];
+
+  $scope.test = {
+    forceToMarket : function(){
+    $state.go('app.nonMarketSingle');
+  }}
+})
+
+.controller('NonMarketSingleCtrl', function($scope, $stateParams) {
+})
+
+.controller('KirimKatalogCtrl', function($scope, Camera, $stateParams, $cordovaSms) {
+})
+
+.controller('LaporHargaCtrl', function($scope, Camera, $stateParams, $cordovaSms) {
+  $scope.data = {
+    title: "",
+    price:"",
+    market: 0
+  };
+
+  $scope.test = {
+    submit : function(){
+      $state.go('app.overview');
+    },
+    takeCamera : function(){
+      Camera.getPicture().then(function(imageURI) {
+        console.log(imageURI);
+        $scope.data.picture = imageURI;
+        $scope.msg = 'SUCCESS';
+      }, function(err) {
+        console.err(err);
+        $scope.msg = err;
+      }, {
+        quality: 75,
+        targetWidth: 320,
+        targetHeight: 320,
+        saveToPhotoAlbum: false,
+        sourceType: 0,
+        correctOrientation: false
+      });
+    },
+    sms : function() {
+      $cordovaSms
+      .send('085722201351', 'SMS content', options)
+      .then(function() {
+        // Success! SMS was sent
+      }, function(error) {
+        // An error occurred
+      });
+    }
+  }
+})
+
+.controller('LaporPasarCtrl', function($scope, Camera, $stateParams, $ionicSideMenuDelegate, $cordovaSMS) {
+  $ionicSideMenuDelegate.canDragContent(false);
+  var lat  = '-6.2398054';
+  var long = '106.8113921';
+  $scope.map = {center: {latitude: lat, longitude: long }, zoom: 16 };
+  $scope.options = {
+    scrollwheel: false,
+    overviewMapControl: false,
+    panControl: true,
+    scaleControl: true,
+    scrollwheel: false,
+    mapTypeControl: false,
+    streetViewControl: false,
+    zoomControl: true
+  };
+})
+
+.controller('TimelineCtrl', function($scope) {})
+
+.controller('CommoditySingleCtrl', function($scope) {
+  $scope.chartConfig = {
+    options: {
+      chart: {
+        type: 'line'
+      }
+    },
+    series: [{
+        data: [10, 15, 12, 8, 7]
+    }],
+    title: {
+        text: ''
+    },
+    loading: false,
+    yAxis: {
+      title: {
+        text: ''
+      },
+      
+    },
+    xAxis: {
+      
+    },
+    legend: {
+      enabled: false,
+    },
+  };
 });

@@ -64,6 +64,16 @@ angular.module('versinfocus', [
     }
   })
 
+  .state('app.commoditySingle', {
+    url: "/commodity/:name",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/commodity-single.html",
+        controller: 'CommoditySingleCtrl'
+      }
+    }
+  })
+
   .state('app.today', {
     url: "/today",
     views: {
@@ -166,6 +176,51 @@ angular.module('versinfocus', [
       'menuContent': {
         templateUrl: "templates/marketsingle.html",
         controller: 'MarketSingleCtrl'
+      }
+    }
+  })
+  .state('app.nonmarket', {
+    url: "/nonmarket",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/nonmarket.html",
+        controller: 'NonMarketCtrl'
+      }
+    }
+  })
+  .state('app.nonMarketSingle', {
+    url: "/nonmarket/single",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/nonmarketsingle.html",
+        controller: 'NonMarketSingleCtrl'
+      }
+    }
+  })
+  .state('app.kirimkatalog', {
+    url: "/kirimkatalog",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/kirimkatalog.html",
+        controller: 'KirimKatalogCtrl'
+      }
+    }
+  })
+  .state('app.laporharga', {
+    url: "/laporharga",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/laporharga.html",
+        controller: 'LaporHargaCtrl'
+      }
+    }
+  })
+  .state('app.laporpasar', {
+    url: "/laporpasar",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/laporpasar.html",
+        controller: 'LaporPasarCtrl'
       }
     }
   });

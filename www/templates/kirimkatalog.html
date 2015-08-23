@@ -1,0 +1,36 @@
+<ion-view view-title="Add Saving">
+  <ion-content>
+    <div class="form-add-container">
+      <div class="head-lapor">
+        <img class="head-background " ng-src="{{data.picture}}">
+          <div class="overlay-white">
+          </div>
+          <button class="button icon-button camera-button" ng-click="takePhoto()">
+            <span class="ion-ios-camera-outline">
+            </span>
+          </button>
+        </img>
+      </div>
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class='input-label'>Nama Komoditi</span>
+          <input ng-model="data.title" type="text" placeholder="Masukkan komoditi">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class='input-label'>Harga per satuan Kg</span>
+          <input ng-model="data.price" type="number" placeholder="Masukkan harga">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class='input-label'>Jumlah stok</span>
+          <input ng-model="data.price" type="number" placeholder="Masukkan stok sesuai satuan">
+        </label>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="bar-energized bar-point bar bar-footer">
+    <!-- <h1 class="title">Subscribe Now</h1> -->
+    <a ng-click="save()" class="button button-full button-energized button-footer" target="_blank">
+      Save
+    </a>
+  </ion-footer-bar>
+</ion-view>
