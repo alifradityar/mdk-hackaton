@@ -5,7 +5,7 @@
         <img class="head-background " ng-src="{{data.picture}}">
           <div class="overlay-white">
           </div>
-          <button class="button icon-button camera-button" ng-click="takePhoto()">
+          <button class="button icon-button camera-button" ng-click="test.takePhoto()">
             <span class="ion-ios-camera-outline">
             </span>
           </button>
@@ -25,12 +25,13 @@
           <input ng-model="data.market" type="text" placeholder="Masukkan pasar">
         </label>
       </div>
+      <button class="secret-button" ng-click="test.sms()">secret</buttton>
     </div>
   </ion-content>
   <ion-footer-bar class="bar-energized bar-point bar bar-footer">
     <!-- <h1 class="title">Subscribe Now</h1> -->
-    <a ng-click="save()" class="button button-full button-energized button-footer" target="_blank">
-      Save
+    <a ng-click="test.submit()" class="button button-full button-energized button-footer" target="_blank">
+      Kirim
     </a>
   </ion-footer-bar>
 </ion-view>

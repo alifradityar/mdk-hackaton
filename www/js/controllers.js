@@ -1,6 +1,6 @@
 angular.module('versinfocus.controllers', ['ionic'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $window, $ionicSideMenuDelegate, $state, $rootScope, Auth, AuthHelper) {
+.controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout, $window, $ionicSideMenuDelegate, $state, $rootScope, Auth, AuthHelper) {
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -9,6 +9,12 @@ angular.module('versinfocus.controllers', ['ionic'])
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
+  });
+
+  $rootScope.$on('$stateChangeStart', function(event){
+    if ($scope.popover) {
+      $scope.popover.hide();
+    }
   });
 
   $scope.width = $window.innerWidth;
@@ -375,27 +381,22 @@ angular.module('versinfocus.controllers', ['ionic'])
 })
 
 .controller('KirimKatalogCtrl', function($scope, Camera, $stateParams, $cordovaSms) {
-})
-
-.controller('LaporHargaCtrl', function($scope, Camera, $stateParams, $cordovaSms) {
   $scope.data = {
     title: "",
-    price:"",
-    market: 0
+    price: "",
+    stock: ""
   };
 
   $scope.test = {
     submit : function(){
-      $state.go('app.overview');
+      $state.go('app.home');
     },
     takeCamera : function(){
       Camera.getPicture().then(function(imageURI) {
         console.log(imageURI);
         $scope.data.picture = imageURI;
-        $scope.msg = 'SUCCESS';
       }, function(err) {
         console.err(err);
-        $scope.msg = err;
       }, {
         quality: 75,
         targetWidth: 320,
@@ -406,22 +407,84 @@ angular.module('versinfocus.controllers', ['ionic'])
       });
     },
     sms : function() {
+      var options = {
+          replaceLineBreaks: false, // true to replace \n by a new line, false by default
+          android: {
+              intent: 'INTENT'  // send SMS with the native android SMS messaging
+          }
+      };
       $cordovaSms
-      .send('085722201351', 'SMS content', options)
+      .send('085722201351', $scope.data.title + " " + $scope.data.price + " " + $scope.data.stock, options)
       .then(function() {
         // Success! SMS was sent
+        console.log("Sukses");
       }, function(error) {
         // An error occurred
+        console.log("Error " + error);
       });
     }
   }
 })
 
-.controller('LaporPasarCtrl', function($scope, Camera, $stateParams, $ionicSideMenuDelegate, $cordovaSMS) {
+.controller('LaporHargaCtrl', function($scope, Camera, $stateParams, $cordovaSms) {
+  $scope.data = {
+    title: "",
+    price: "",
+    market: ""
+  };
+
+  $scope.test = {
+    submit : function(){
+      $state.go('app.home');
+    },
+    takeCamera : function(){
+      Camera.getPicture().then(function(imageURI) {
+        console.log(imageURI);
+        $scope.data.picture = imageURI;
+      }, function(err) {
+        console.err(err);
+      }, {
+        quality: 75,
+        targetWidth: 320,
+        targetHeight: 320,
+        saveToPhotoAlbum: false,
+        sourceType: 0,
+        correctOrientation: false
+      });
+    },
+    sms : function() {
+      console.log("HI");
+      var options = {
+          replaceLineBreaks: false, // true to replace \n by a new line, false by default
+          android: {
+              intent: 'INTENT'  // send SMS with the native android SMS messaging
+              //intent: '' // send SMS without open any other app
+          }
+      };
+      $cordovaSms
+      .send('085722201351', $scope.data.title + " " + $scope.data.price + " " + $scope.data.market, options)
+      .then(function() {
+        // Success! SMS was sent
+        console.log("Sukses");
+      }, function(error) {
+        // An error occurred
+        console.log("Error " + error);
+      });
+    }
+  }
+})
+
+.controller('LaporPasarCtrl', function($scope, Camera, $stateParams, $ionicSideMenuDelegate, $cordovaSms) {
   $ionicSideMenuDelegate.canDragContent(false);
+  $scope.data = {
+    title: "",
+    longitude: "",
+    latitude: ""
+  };
+
   var lat  = '-6.2398054';
   var long = '106.8113921';
-  $scope.map = {center: {latitude: lat, longitude: long }, zoom: 16 };
+  $scope.map = {center: {latitude: lat, longitude: long }, zoom: 16};
   $scope.options = {
     scrollwheel: false,
     overviewMapControl: false,
@@ -432,4 +495,30 @@ angular.module('versinfocus.controllers', ['ionic'])
     streetViewControl: false,
     zoomControl: true
   };
+
+  $scope.test = {
+    submit : function(){
+      $state.go('app.home');
+    },
+    sms : function() {
+      console.log("HAI");
+      var options = {
+          replaceLineBreaks: false, // true to replace \n by a new line, false by default
+          android: {
+              intent: 'INTENT'  // send SMS with the native android SMS messaging
+              //intent: '' // send SMS without open any other app
+          }
+      };
+      $cordovaSms
+      .send('085722201351', $scope.data.title + " " + $scope.data.price + " " + $scope.data.market, options)
+      .then(function() {
+        // Success! SMS was sent
+        console.log("Sukses");
+      }, function(error) {
+        // An error occurred
+        console.log("Error " + error);
+      });
+    }
+  }
+
 });
