@@ -609,3 +609,32 @@ button.button-icon.round-overlay-button {
   height: 50px;
   opacity: 0;
 }
+
+.share-group {
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:20px;
+  text-align:center;
+  p {
+    font-size:1.2em;
+  }
+  h2 {
+    color: #BF3C2C;
+  }
+}
+
+.achievement {
+    .profile {
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        left: 10px;
+        img {
+            width: 100%;
+            border-radius: 50%;
+        }
+        .h3 {
+          color: #BF3C2C !important;
+        }
+    }
+}

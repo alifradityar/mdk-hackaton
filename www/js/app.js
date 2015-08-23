@@ -201,6 +201,42 @@ angular.module('versinfocus', [
         controller: 'LaporPasarCtrl'
       }
     }
+  })
+  .state('app.bantuan', {
+    url: "/bantuan",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/bantuan.html",
+        controller: 'BantuanCtrl'
+      }
+    }
+  })
+  .state('app.kontribusi', {
+    url: "/kontribusi",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/kontribusi.html",
+        controller: 'KontribusiCtrl'
+      }
+    }
+  })
+  .state('app.pencapaian', {
+    url: "/pencapaian",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/pencapaian.html",
+        controller: 'PencapaianCtrl'
+      }
+    }
+  })
+  .state('app.share', {
+    url: "/share",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/share.html",
+        controller: 'ShareCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

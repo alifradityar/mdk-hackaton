@@ -521,4 +521,16 @@ angular.module('versinfocus.controllers', ['ionic'])
     }
   }
 
+})
+
+.controller('KontribusiCtrl', function($scope, $stateParams) {
+})
+
+.controller('PencapaianCtrl', function($scope, $stateParams) {
+})
+
+.controller('BantuanCtrl', function($scope, $stateParams) {
+})
+
+.controller('ShareCtrl', function($scope, $stateParams) {
 });

@@ -8007,3 +8007,24 @@ button.button-icon.round-overlay-button {
   width: 100%;
   height: 50px;
   opacity: 0; }
+
+.share-group {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 20px;
+  text-align: center; }
+  .share-group p {
+    font-size: 1.2em; }
+  .share-group h2 {
+    color: #BF3C2C; }
+
+.achievement .profile {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 10px; }
+  .achievement .profile img {
+    width: 100%;
+    border-radius: 50%; }
+  .achievement .profile .h3 {
+    color: #BF3C2C !important; }
